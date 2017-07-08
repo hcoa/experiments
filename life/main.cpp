@@ -27,7 +27,7 @@ vector<pair<int, int>> getRandomLiveCells(const int world_size) {
     uniform_int_distribution<int> uni(0, world_size-1);
     uniform_int_distribution<int> uni_amount(world_size, world_size*3);
     auto num_of_cells = uni_amount(rng);
-    
+
     vector<pair<int, int>> cells(0);
     for (int i = 0; i < num_of_cells; i++) {
         int x = uni(rng);
@@ -73,7 +73,7 @@ int neighborsCount(const bool world[][SIZE], int x, int y) {
         count++;
     if (y < SIZE-1 && world[x][y+1])
         count++;
-    
+
     return count;
 }
 
@@ -95,7 +95,7 @@ bool nextGeneration(bool world[][SIZE], bool temp_world[][SIZE]) {
             } else {
                 temp_world[i][j] = false;
             }
-        } 
+        }
     }
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
@@ -114,24 +114,12 @@ void displayLiveCells(vector<pair<int, int>> live_cells) {
     cout<<"-------------------------------" <<"\n";
 }
 
-// void ClearScreen()
-//   {
-//   if (!cur_term)
-//     {
-//     int result;
-//     setupterm( NULL, STDOUT_FILENO, &result );
-//     if (result <= 0) return;
-//     }
-
-//   putp( tigetstr( "clear" ) );
-//   }
-
 int main() {
     bool World[SIZE][SIZE];
     cout<< "Size of the world is " << SIZE << " by "<< SIZE << "\n";
     vector<pair<int, int>> live_cells = getRandomLiveCells(SIZE);
     cout<<"Amount of live cells is " << live_cells.size() << "\n";
-    displayLiveCells(live_cells);
+    //displayLiveCells(live_cells);
 
     initCells(World);
     setLiveCells(World, live_cells);
@@ -148,8 +136,5 @@ int main() {
         this_thread::sleep_for(std::chrono::milliseconds(500));
         cnt++;
     }
-    
-    
-
     return 0;
 }
