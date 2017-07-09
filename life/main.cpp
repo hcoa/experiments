@@ -84,8 +84,8 @@ bool nextGeneration(bool world[][SIZE], bool temp_world[][SIZE]) {
         for (int j = 0; j < SIZE; j++) {
             neighbors = neighborsCount(world, i, j);
             if (neighbors == 2) {
-                // temp_world[i][j] = world[i][j];
-                temp_world[i][j] = true;
+                temp_world[i][j] = world[i][j];
+                //temp_world[i][j] = true;
                 if (temp_world[i][j]){
                     any = true;
                 }
@@ -114,6 +114,15 @@ void displayLiveCells(vector<pair<int, int>> live_cells) {
     cout<<"-------------------------------" <<"\n";
 }
 
+void setGlider(bool world[][SIZE]) {
+    vector<pair<int, int>> coordinates = {{1, 0}, {2, 1}, {0, 2}, {1, 2}, {2, 2}};
+    for (int i = 0; i < coordinates.size(); i++) {
+        int x = coordinates[i].first;
+        int y = coordinates[i].second;
+        world[x][y] = true;
+    }
+}
+
 int main() {
     bool World[SIZE][SIZE];
     cout<< "Size of the world is " << SIZE << " by "<< SIZE << "\n";
@@ -122,7 +131,8 @@ int main() {
     //displayLiveCells(live_cells);
 
     initCells(World);
-    setLiveCells(World, live_cells);
+    //setLiveCells(World, live_cells);
+    setGlider(World);
     displayWorld(World);
 
     bool TempWorld[SIZE][SIZE];
