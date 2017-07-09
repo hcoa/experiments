@@ -127,8 +127,8 @@ int main() {
     bool World[SIZE][SIZE];
     cout<< "Size of the world is " << SIZE << " by "<< SIZE << "\n";
     vector<pair<int, int>> live_cells = getRandomLiveCells(SIZE);
-    cout<<"Amount of live cells is " << live_cells.size() << "\n";
-    //displayLiveCells(live_cells);
+    cout<<"Amount of live cells are " << live_cells.size() << "\n";
+    // displayLiveCells(live_cells);
 
     initCells(World);
     //setLiveCells(World, live_cells);
